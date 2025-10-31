@@ -9,6 +9,7 @@ const momentsData = [
     { id: 7, title: "orang mirip katanya jodoh", date: "", desc: "udah berapa orang ya yg bilang kita mirip, tp emg iya sih namanya jodoh😝", image: "assets/momen7.jpg" },
     { id: 8, title: "day 365++", date: "", desc: "ga kerasa udah setahun lebih kita bareng2, langgeng terus sayang❤", image: "assets/momen8.jpg" },
     { id: 9, title: "kebanyakan momen", date: "", desc: "udah bingung mau ngasih kata2 apalagii😫 intinya i love you full sayangg🥺🫶🏻", image: "assets/momen9.jpg" },
+    { id: 10, title: "kesayangan", date: "", desc: "makasi udah jadi orang yang berharga buat aku🥺🫶🏻", image: "assets/momen10.jpg" },
 ];
 
 const galleryContainer = document.querySelector('.gallery-container');
@@ -148,4 +149,5 @@ function createFlyingHeart() {
 
 
 // Jalankan fungsi saat halaman dimuat
+
 document.addEventListener('DOMContentLoaded', renderMoments);
