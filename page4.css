@@ -13,7 +13,7 @@ body {
     background-color: var(--light-bg); 
     color: var(--dusty-blue);
     margin: 0;
-    line-height: 1.6;
+    line-height: 1;
 }
 
 /* Header Lucu */
@@ -183,4 +183,5 @@ footer {
     color: var(--dusty-blue);
     border-top: 1px solid var(--rose-gold);
 }
+
 
