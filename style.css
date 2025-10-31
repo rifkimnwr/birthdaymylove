@@ -1,0 +1,84 @@
+body {
+  background: #f5f3ef;
+  font-family: 'Fredoka One', cursive;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  color: #4a403a;
+}
+
+.container {
+  text-align: center;
+  background: #fffaf5;
+  padding: 45px 30px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 340px;
+  transition: all 0.3s ease;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: #6b4f4f;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+.input-box {
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  height: 55px;
+  border: 3px solid #e6cfc2;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  line-height: 55px;
+  color: #333;
+  background: #f9f4f0;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+button {
+  background: #e7d3c0;
+  border: none;
+  padding: 15px 0;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  color: #4a403a;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+button:hover {
+  background: #d6bfa9;
+  transform: translateY(-2px);
+}
+
+.delete {
+  background: #c68b59;
+  color: #fffaf5;
+}
+
+.delete:hover {
+  background: #b57b4f;
+}
+
+.input-box.active {
+  animation: glow 1s ease-in-out infinite alternate;
+  border-color: #b08968;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 6px #b08968; }
+  to { box-shadow: 0 0 14px #b08968; }
+}

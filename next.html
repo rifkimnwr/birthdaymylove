@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You, My Love</title>
+  <link rel="stylesheet" href="next.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="sparkles"></div>
+
+  <div class="container">
+    <h1 class="fade-in">Happy Birthday, My Love 🎂</h1>
+
+    <div class="photo-frame float">
+      <img src="assets/khansa10.jpg" alt="Khansa" class="photo">
+    </div>
+
+    <p class="message fade-in">
+      Every smile of yours lights up my world.<br>
+      On this special day, may your heart be as warm as your soul,<br>
+      and your dreams bloom as beautifully as your smile. 🌸
+    </p>
+
+    <button class="next-btn fade-in">Tap to continue 💫</button>
+  </div>
+
+  <script>
+    const btn = document.querySelector('.next-btn');
+    btn.addEventListener('click', () => {
+      // efek transisi lembut sebelum pindah halaman
+      document.body.style.transition = 'opacity 0.8s ease';
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        window.location.href = 'page3.html';
+      }, 800);
+    });
+  </script>
+</body>
+</html>
