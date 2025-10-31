@@ -9,7 +9,7 @@
 
 /* Pengaturan Dasar */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Font untuk teks biasa */
     background-color: var(--light-bg); 
     color: var(--dusty-blue);
     margin: 0;
@@ -19,13 +19,13 @@ body {
 /* Header Lucu */
 header {
     text-align: center;
-    padding: 30px 20px; /* Padding default desktop */
-    background-color: var(--accent-light); /* Warna default */
+    padding: 30px 20px;
+    background-color: var(--accent-light); 
     border-bottom: 5px dashed var(--rose-gold);
 }
 header h1 {
-    font-family: 'Fredoka One', cursive; 
-    font-size: 3em; /* Ukuran default desktop */
+    font-family: 'Fredoka One', cursive; /* Font Lucu */
+    font-size: 3em;
     color: var(--dusty-blue);
     margin-bottom: 0px;
     text-shadow: 2px 2px 0 var(--rose-gold);
@@ -35,6 +35,7 @@ header p {
     color: var(--dusty-blue);
     margin-top: 5px;
 }
+
 
 /* Galeri Container (CSS GRID Responsif) */
 .gallery-container {
@@ -58,7 +59,7 @@ header p {
 }
 .momen-card:hover {
     transform: scale(1.05) rotate(3deg);
-    box-shadow: 0 8px 20px rgba(155, 130, 110, 0.5); 
+    box-shadow: 0 8px 20px rgba(155, 130, 110, 0.5); /* Bayangan Rose Gold */
 }
 
 .momen-card img {
@@ -69,14 +70,14 @@ header p {
 }
 
 .momen-card h2 {
-    font-family: 'Fredoka One', sans-serif; 
-    font-size: 1.1em; 
+    font-family: 'Fredoka One', sans-serif; /* Font Lucu */
+    font-size: 1.1em; /* Dibuat sedikit lebih kecil agar pas */
     padding: 5px;
     margin: 0;
     color: var(--dusty-blue);
 }
 
-/* Modal Styling (Desktop Default) */
+/* Modal Styling */
 .modal {
     display: none; 
     position: fixed; 
@@ -101,9 +102,16 @@ header p {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 @keyframes bounceIn {
-  from { opacity: 0; transform: scale(0.5); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Styling Teks Modal */
@@ -124,22 +132,25 @@ header p {
     border-radius: 10px;
     max-height: 400px;
     width: 100%;
-    object-fit: contain; /* Diubah menjadi contain agar gambar utuh */
-    display: block;
-    margin: 0 auto;
+    object-fit: cover;
 }
 
 /* --- Styling Tombol Next Page --- */
+
 .next-btn-wrapper {
     text-align: center;
     padding: 30px 20px 30px; 
 }
+
 .cute-btn {
     font-family: 'Fredoka One', sans-serif;
     font-size: 1.3em;
     padding: 15px 35px;
+    
+    /* Kombinasi warna cerah */
     background: linear-gradient(145deg, var(--rose-gold), var(--dusty-blue)); 
     color: var(--light-bg); 
+    
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -147,12 +158,21 @@ header p {
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     letter-spacing: 1px;
 }
+
 .cute-btn:hover {
     transform: translateY(-5px) rotate(-1deg) scale(1.05);
     box-shadow: 0 15px 25px rgba(155, 130, 110, 0.6); 
 }
+
 .cute-btn:active {
     transform: scale(0.95);
+}
+
+
+/* Efek Tambahan Lucu (Confetti & Hearts) */
+.confetti, .heart-effect {
+    position: absolute;
+    pointer-events: none;
 }
 
 /* Footer */
@@ -162,70 +182,4 @@ footer {
     font-size: 0.9em;
     color: var(--dusty-blue);
     border-top: 1px solid var(--rose-gold);
-}
-
-/* ============================================== */
-/* === MEDIA QUERY: PENYESUAIAN KHUSUS MOBILE === */
-/* ============================================== */
-@media (max-width: 600px) {
-    
-    /* 1. HEADER (Judul & Warna) */
-    header {
-        /* Mengurangi padding header agar lebih ringkas di HP */
-        padding: 20px 10px; 
-        
-        /* OPSI UBAH WARNA DI HP: Aktifkan baris di bawah jika ingin Header berwarna putih/light-bg di HP */
-        /* background-color: var(--light-bg); */ 
-    }
-    header h1 {
-        /* Ukuran font judul diperkecil */
-        font-size: 2.2em; 
-    }
-
-    /* 2. GALERI */
-    .gallery-container {
-        padding: 10px;
-        gap: 10px; 
-    }
-    .momen-card img {
-        height: 120px; 
-    }
-    
-    /* 3. MODAL (Modal Foto) */
-    .modal {
-        padding: 0; 
-    }
-    .modal-content-wrapper {
-        width: 100%; 
-        max-width: none; 
-        margin: 0; 
-        padding: 15px; 
-        min-height: 100vh; 
-        border-radius: 0; 
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: center; 
-        align-items: center;
-        box-sizing: border-box; 
-    }
-
-    .modal-content {
-        max-height: 55vh; 
-        width: 100%;
-        border-width: 3px;
-        object-fit: contain; 
-    }
-    #modalTitle {
-        font-size: 1.5em; 
-    }
-
-    /* 4. BUTTON NEXT PAGE */
-    .next-btn-wrapper {
-        padding: 20px 10px 20px;
-    }
-    .cute-btn {
-        font-size: 1.1em;
-        padding: 12px 25px;
-    }
 }
