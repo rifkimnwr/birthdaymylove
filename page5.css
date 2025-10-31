@@ -11,27 +11,36 @@ body {
     background-color: var(--light-bg);
     color: var(--dusty-blue);
     margin: 0;
-    padding: 0;
+    padding: 20px; /* Tambahkan padding agar ada ruang scroll di atas dan bawah */
+    
+    /* PERBAIKAN RESPONSIVITAS SCROLLING: */
     display: flex;
+    flex-direction: column; /* Ubah arah flex menjadi kolom */
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; <--- BARIS INI DIHAPUS/DIHILANGKAN */
+    
+    /* Pastikan tidak ada konten yang tersembunyi, biarkan browser menangani scrolling */
+    box-sizing: border-box; 
 }
 
 .message-container {
     max-width: 600px;
     padding: 30px;
-    margin: 20px;
+    margin: 20px 0; /* Ubah margin agar ada ruang di atas/bawah */
     background-color: white;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
     z-index: 10;
+    
+    /* PENTING untuk konten yang bisa di-scroll: */
+    flex-shrink: 0; /* Pastikan container tidak menyusut paksa */
 }
 
-/* Judul dan Subtitle */
+/* Judul dan Subtitle (Dibiarkan sama) */
 .main-title {
     font-family: 'Fredoka One', cursive;
     font-size: 2.5em;
@@ -44,7 +53,7 @@ body {
     margin-top: -10px;
 }
 
-/* Kotak Pesan Cinta */
+/* Kotak Pesan Cinta (Dibiarkan sama) */
 .love-message-box {
     text-align: left;
     padding: 20px;
@@ -72,7 +81,7 @@ body {
     text-align: right;
 }
 
-/* Tombol Kembali */
+/* Tombol Kembali (Dibiarkan sama) */
 .back-btn-wrapper {
     margin-top: 30px;
 }
@@ -95,14 +104,14 @@ body {
     background-color: var(--rose-gold);
 }
 
-/* --- Dekorasi Lucu: Detak Jantung di Background --- */
+/* --- Dekorasi Lucu: Detak Jantung di Background (Dibiarkan sama) --- */
 .message-container::before {
     content: '💖';
     position: absolute;
     top: 50%;
     left: 50%;
     font-size: 10em;
-    color: rgba(155, 130, 110, 0.1); /* Rose gold sangat transparan */
+    color: rgba(155, 130, 110, 0.1); 
     transform: translate(-50%, -50%);
     animation: heart-pulse 2s infinite ease-in-out;
     z-index: -1;
