@@ -1,7 +1,7 @@
 /* Palet Warna Inspirasi */
 :root {
     --light-bg: #FAF9F6;     /* Putih Pudar */
-    --accent-light: #f8eacc; /* Kuning Pastel/Cream */
+    --accent-light: #fdeedd; /* Kuning Pastel/Cream */
     --rose-gold: #9b826e;    /* Cokelat Keemasan (Bingkai/Aksen) */
     --dusty-blue: #6D8494;   /* Teks Utama/Dark Accent */
     --text-dark: #333333;
@@ -183,3 +183,4 @@ footer {
     color: var(--dusty-blue);
     border-top: 1px solid var(--rose-gold);
 }
+
