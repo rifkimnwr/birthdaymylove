@@ -30,7 +30,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100vh; /* Pastikan container penuh tinggi untuk centering */
 }
 
 .stack {
@@ -62,7 +62,7 @@ body {
 
 .caption {
   position: absolute;
-  bottom: -50px;
+  bottom: -50px; /* Posisi di bawah stack, tapi akan muncul setelah trigger */
   text-align: center;
   color: #3d2e45;
   font-size: 17px;
@@ -71,18 +71,19 @@ body {
   line-height: 1.6;
   max-width: 380px;
   padding: 20px 30px;
+  /* Background gradient yang lebih menarik dan elegan */
   background: linear-gradient(135deg, #ffeaf2 0%, #fdf6ff 50%, #f9f0ff 100%);
   border: 2px solid rgba(255, 182, 193, 0.5);
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3),
               inset 0 2px 10px rgba(255, 255, 255, 0.7),
-              0 0 15px rgba(255, 182, 193, 0.2);
+              0 0 15px rgba(255, 182, 193, 0.2); /* Tambahan glow halus */
   backdrop-filter: blur(10px);
-  opacity: 0;
+  opacity: 0; /* Disembunyikan awalnya */
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-  z-index: 1;
+  z-index: -1; /* Agar tidak mengganggu klik foto */
 }
 
 .caption.show {
@@ -90,8 +91,9 @@ body {
   transform: translateY(0);
 }
 
+/* Tombol Next Page - sekarang di bawah caption */
 .next-btn {
-  margin-top: 30px;
+  margin-top: 30px; /* Jarak dari caption */
   padding: 16px 45px;
   font-size: 17px;
   font-family: 'Poppins', sans-serif;
@@ -106,7 +108,7 @@ body {
   opacity: 0;
   transform: translateY(20px);
   letter-spacing: 0.5px;
-  position: relative;
+  position: relative; /* Ubah dari absolute ke relative agar di bawah caption */
 }
 
 .next-btn.show {
