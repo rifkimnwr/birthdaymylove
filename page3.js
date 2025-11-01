@@ -8,20 +8,16 @@ const totalPhotos = cards.length;
 
 // Fungsi untuk mengatur ulang posisi dan z-index semua kartu
 function resetStack() {
-    // Ambil kartu yang tersisa di DOM
     const remainingCards = document.querySelectorAll('.photo-card');
     remainingCards.forEach((card, index) => {
-        // z-index: memastikan kartu teratas selalu memiliki z-index tertinggi
         card.style.zIndex = remainingCards.length - index; 
         
-        // Atur ulang properti CSS untuk stacking
         // Offset dikurangi (dari 6px menjadi 4px) agar stacking lebih rapat di HP
         card.style.setProperty('--offset', `${index * 4}px`); 
         
         // Sudut disesuaikan ke tengah tumpukan
         card.style.setProperty('--angle', `${(index - (remainingCards.length - 1) / 2) * 1.5}deg`); 
         
-        // Memastikan transisi reset cepat
         card.style.transition = 'transform 0.4s ease-out';
         
         // Memastikan kartu yang tersisa kembali ke posisi transform normal
@@ -35,16 +31,12 @@ function showNextButton() {
     const nextBtnWrapper = document.querySelector('.next-btn-wrapper');
     const nextBtn = document.createElement('a');
     nextBtn.textContent = 'Next Page ➤';
-    nextBtn.className = 'cute-btn'; // Menggunakan class CSS button yang bagus
+    nextBtn.className = 'cute-btn show'; // Tambahkan class 'show' langsung di JS
     nextBtn.href = 'page4.html';
     
     if (nextBtnWrapper) {
         nextBtnWrapper.appendChild(nextBtn);
-    
-        // Animasi muncul
-        setTimeout(() => {
-            nextBtn.classList.add('show');
-        }, 100);
+        // Tidak perlu setTimeout karena class 'show' langsung ditambahkan
     }
 }
 
@@ -65,11 +57,9 @@ document.addEventListener('click', (event) => {
     
     if (!card || card.classList.contains('clicked')) return; 
     
-    // Tandai kartu sudah diklik
     card.classList.add('clicked');
     clickedCount++;
     
-    // Menetapkan z-index lebih tinggi untuk kartu yang diklik agar berada di atas tumpukan
     card.style.zIndex = totalPhotos + 1;
 
     // Animasi kartu keluar: menggunakan cubic-bezier untuk efek bounce yang cepat
@@ -86,14 +76,12 @@ document.addEventListener('click', (event) => {
     // Hapus kartu dari DOM dan reset stack
     setTimeout(() => {
         card.remove();
-        
-        // Reset stack untuk kartu yang tersisa
         resetStack();
         
         // Cek apakah semua foto sudah diklik
         if (clickedCount === totalPhotos) {
             showCaption(); 
-            showNextButton(); 
+            showNextButton(); // Tombol akan muncul dan tetap di layar (didefinisikan di CSS)
         }
-    }, 700); // Waktu harus lebih lama dari durasi transisi (0.6s)
+    }, 700);
 });
