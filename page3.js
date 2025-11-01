@@ -1,10 +1,6 @@
 // Counter untuk tracking foto yang sudah diklik
 let clickedCount = 0;
-
-// Ambil semua kartu foto
-const cards = document.querySelectorAll('.photo-card');
-// Total foto = 9, dihitung dinamis dari DOM
-const totalPhotos = cards.length; 
+const totalPhotos = 5;
 
 // Fungsi untuk mengatur ulang posisi dan z-index semua kartu
 function resetStack() {
@@ -20,56 +16,62 @@ function resetStack() {
 
 // Fungsi untuk menampilkan tombol Next Page
 function showNextButton() {
-    const nextBtnWrapper = document.querySelector('.next-btn-wrapper');
-    const nextBtn = document.createElement('a');
-    nextBtn.textContent = 'Next Page ➤';
-    nextBtn.className = 'cute-btn show'; // Menggunakan CSS untuk tampil
-    nextBtn.href = 'page4.html'; // Tautan ke halaman tujuan
-    
-    if (nextBtnWrapper && nextBtnWrapper.children.length === 0) {
-        nextBtnWrapper.appendChild(nextBtn);
-    }
+  const nextBtn = document.createElement('button');
+  nextBtn.textContent = 'Next Page ➤';
+  nextBtn.className = 'next-btn';
+  nextBtn.onclick = () => {
+    window.location.href = 'page4.html';
+  };
+  
+  document.querySelector('.container').appendChild(nextBtn);
+  
+  // Animasi muncul
+  setTimeout(() => {
+    nextBtn.classList.add('show');
+  }, 100);
 }
 
-// Fungsi untuk menampilkan caption
+// Fungsi untuk menampilkan caption setelah foto ke-5 diklik
 function showCaption() {
-    const caption = document.querySelector('.caption');
-    if (caption) {
-        caption.classList.add('show');
-    }
+  const caption = document.querySelector('.caption');
+  caption.classList.add('show');
 }
 
 // Inisialisasi tumpukan pertama kali
 resetStack();
 
-// Event listener utama untuk klik kartu
-document.addEventListener('click', (event) => {
-    const card = event.target.closest('.photo-card');
+// Event listener untuk setiap kartu
+const cards = document.querySelectorAll('.photo-card');
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    // Cegah klik berulang pada kartu yang sama
+    if (card.classList.contains('clicked')) return;
     
-    if (!card || card.classList.contains('clicked')) return; 
-    
+    // Tandai kartu sudah diklik
     card.classList.add('clicked');
     clickedCount++;
     
-    card.style.zIndex = totalPhotos + 1;
-
     // Animasi kartu keluar
     card.style.transition = 'transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease'; 
     card.style.transform = 'translate(200%, -50px) rotate(15deg) scale(0.9)'; 
     
     setTimeout(() => {
-        card.style.opacity = '0';
-    }, 300);
+      card.style.opacity = '0';
+    }, 200);
 
-    // Hapus kartu dari DOM dan reset stack
+    // Hapus kartu dari DOM (bukan pindahkan)
     setTimeout(() => {
-        card.remove();
-        resetStack();
-        
-        // Cek apakah semua foto sudah diklik (total 9 foto)
-        if (clickedCount === totalPhotos) {
-            showCaption(); 
-            showNextButton(); // Tombol Next Page muncul
-        }
+      card.remove();
+      
+      // Reset stack untuk kartu yang tersisa
+      resetStack();
+      
+      // Cek apakah semua foto sudah diklik
+      if (clickedCount === totalPhotos) {
+        showCaption(); // Munculkan caption setelah foto ke-5
+        showNextButton(); // Munculkan button
+      }
     }, 700);
+  });
 });
