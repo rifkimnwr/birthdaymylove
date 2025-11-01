@@ -75,4 +75,3 @@ cards.forEach(card => {
     }, 700);
   });
 });
-
