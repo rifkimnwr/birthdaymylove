@@ -1,6 +1,6 @@
 // Counter untuk tracking foto yang sudah diklik
 let clickedCount = 0;
-const totalPhotos = 5;
+const totalPhotos = 9;
 
 // Fungsi untuk mengatur ulang posisi dan z-index semua kartu
 function resetStack() {
@@ -75,3 +75,4 @@ cards.forEach(card => {
     }, 700);
   });
 });
+
