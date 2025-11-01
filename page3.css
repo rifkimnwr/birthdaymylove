@@ -185,7 +185,16 @@ body {
 
 
 /* Tombol Next Page - sekarang di bawah caption */
-
+/* Tombol Next Page Wrapper (Menggunakan Fixed Position) */
+.next-btn-wrapper {
+    position: fixed; /* PENTING: Tombol tetap di layar */
+    bottom: 30px; 
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 200; 
+    padding: 0 20px;
+}
 /* Tombol Next Page */
 .cute-btn {
     margin-top: 0;
@@ -261,3 +270,4 @@ body {
         padding: 12px 25px;
     }
 }
+
