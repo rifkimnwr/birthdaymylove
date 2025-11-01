@@ -10,13 +10,13 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    /* Dihapus: height: 100vh; - Ini mencegah scrolling */
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(160deg, #ffeaf2, #fdf6ff, #f9f0ff);
-    overflow-x: hidden; /* Mencegah scroll horizontal saat kartu keluar */
+    overflow-x: hidden; /* Dibiarkan di sini untuk mencegah scroll horizontal saat kartu keluar */
 }
 
 .background {
@@ -38,8 +38,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* Hapus height: 100vh agar container bisa scroll jika kontennya panjang */
+    /* Dihapus: justify-content: center; karena sekarang ada scroll */
     padding: 50px 0 100px 0; /* Tambahkan padding agar ada ruang untuk tombol fixed di bawah */
     min-height: 100vh;
 }
@@ -47,8 +46,8 @@ body {
 /* Tumpukan Kartu */
 .stack {
     position: relative;
-    width: 280px; /* Ukuran Desktop Default */
-    height: 380px; /* Ukuran Desktop Default */
+    width: 280px; 
+    height: 380px; 
     perspective: 1000px;
     display: flex;
     flex-direction: column;
@@ -65,7 +64,6 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transition: transform 0.6s ease, box-shadow 0.4s ease;
-    /* Variabel ini dikontrol oleh JS untuk stacking */
     transform: translate(var(--offset, 0), var(--offset, 0)) rotate(var(--angle, 0deg));
 }
 
@@ -73,10 +71,9 @@ body {
     box-shadow: 0 0 25px rgba(255, 182, 193, 0.6);
 }
 
-
 /* Caption/Pesan Tambahan */
 .caption {
-    position: relative; /* Diubah dari absolute agar mengikuti aliran dokumen setelah stack */
+    position: relative;
     margin-top: 50px;
     
     text-align: center;
@@ -99,7 +96,7 @@ body {
     transform: translateY(20px);
     transition: opacity 1s ease, transform 1s ease;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
-    z-index: 10; /* Z-index wajar agar terlihat di atas background */
+    z-index: 10;
 }
 
 .caption.show {
@@ -107,21 +104,20 @@ body {
     transform: translateY(0);
 }
 
-
 /* Tombol Next Page Wrapper (Menggunakan Fixed Position) */
 .next-btn-wrapper {
-    position: fixed; /* PENTING: Mengunci posisi di layar */
-    bottom: 30px; /* Jarak dari bawah */
+    position: fixed; 
+    bottom: 30px; 
     left: 0;
     width: 100%;
     text-align: center;
-    z-index: 200; /* Paling tinggi agar selalu terlihat */
+    z-index: 200; 
     padding: 0 20px;
 }
 
 /* Tombol Next Page */
 .cute-btn {
-    margin-top: 0; /* Margin diatur di wrapper */
+    margin-top: 0;
     padding: 16px 45px;
     font-size: 17px;
     font-family: 'Poppins', sans-serif;
@@ -136,7 +132,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
     letter-spacing: 0.5px;
-    display: inline-block; /* Agar transform berfungsi */
+    display: inline-block;
 }
 
 .cute-btn.show {
@@ -153,39 +149,44 @@ body {
     transform: scale(0.98);
 }
 
-
 /* ============================================== */
 /* === MEDIA QUERY: PENYESUAIAN KHUSUS MOBILE === */
 /* ============================================== */
 @media (max-width: 600px) {
     
     body {
-        /* Hapus centering vertikal di body agar konten di .container bisa di-scroll */
+        /* PENTING: Menghapus align-items: center; vertikal di body 
+           agar konten .container bisa di-scroll dari atas ke bawah */
         align-items: flex-start; 
-        /* Pastikan body overflow-y: auto; jika ada konten di luar .container */
+        padding-top: 20px; /* Tambahkan sedikit padding atas di HP */
+    }
+    
+    .container {
+        /* Menghapus justify-content di HP, membiarkannya mengalir */
+        justify-content: flex-start; 
     }
 
     /* 1. STACK & KARTU */
     .stack {
-        width: 220px; /* Perkecil ukuran stack */
+        width: 220px; 
         height: 300px;
         margin-top: 30px;
     }
     
     .photo-card {
-        border-width: 4px; /* Perkecil border di HP */
+        border-width: 4px;
     }
 
     /* 2. CAPTION */
     .caption {
-        max-width: 90%; /* Ambil lebar layar HP */
+        max-width: 90%; 
         font-size: 15px;
         padding: 15px 20px;
     }
 
     /* 3. TOMBOL FIXED */
     .next-btn-wrapper {
-        bottom: 15px; /* Lebih dekat ke bawah layar */
+        bottom: 15px; 
         padding: 0 15px;
     }
     .cute-btn {
