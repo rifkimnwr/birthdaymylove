@@ -186,66 +186,78 @@ body {
 
 /* Tombol Next Page - sekarang di bawah caption */
 
-.next-btn {
-
-  margin-top: 30px; /* Jarak dari caption */
-
-  padding: 16px 45px;
-
-  font-size: 17px;
-
-  font-family: 'Poppins', sans-serif;
-
-  font-weight: 600;
-
-  color: #fff;
-
-  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-
-  border: none;
-
-  border-radius: 50px;
-
-  cursor: pointer;
-
-  box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
-
-  transition: all 0.3s ease;
-
-  opacity: 0;
-
-  transform: translateY(20px);
-
-  letter-spacing: 0.5px;
-
-  position: relative; /* Ubah dari absolute ke relative agar di bawah caption */
-
+/* Tombol Next Page */
+.cute-btn {
+    margin-top: 0;
+    padding: 16px 45px;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
+    transition: all 0.3s ease;
+    opacity: 0; /* Awalnya disembunyikan */
+    transform: translateY(20px);
+    letter-spacing: 0.5px;
+    display: inline-block;
 }
 
-
-
-.next-btn.show {
-
-  opacity: 1;
-
-  transform: translateY(0);
-
+.cute-btn.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-
-
-.next-btn:hover {
-
-  transform: translateY(-2px) scale(1.05);
-
-  box-shadow: 0 15px 35px rgba(255, 117, 140, 0.5);
-
+.cute-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(255, 117, 140, 0.5);
 }
 
+.cute-btn:active {
+    transform: scale(0.98);
+}
 
+/* === MEDIA QUERY: PENYESUAIAN KHUSUS MOBILE === */
+/* ============================================== */
+@media (max-width: 600px) {
+    
+    body {
+        align-items: flex-start; /* Izinkan konten mengalir dan bisa di-scroll */
+        padding-top: 20px;
+    }
+    
+    .container {
+        justify-content: flex-start;
+    }
 
-.next-btn:active {
+    /* 1. STACK & KARTU */
+    .stack {
+        width: 220px;
+        height: 300px;
+        margin-top: 30px;
+    }
+    
+    .photo-card {
+        border-width: 4px;
+    }
 
-  transform: scale(0.98);
+    /* 2. CAPTION */
+    .caption {
+        max-width: 90%;
+        font-size: 15px;
+        padding: 15px 20px;
+    }
 
+    /* 3. TOMBOL FIXED */
+    .next-btn-wrapper {
+        bottom: 15px; 
+        padding: 0 15px;
+    }
+    .cute-btn {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
 }
